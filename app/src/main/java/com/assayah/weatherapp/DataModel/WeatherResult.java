@@ -19,35 +19,35 @@ public class WeatherResult {
     }
 
     public String getCityName() {
-        return query.results.channel.getLocation().getCity();
+        return doesChannelExists()?query.results.channel.getLocation().getCity():"";
     }
 
     public Float getWindSpeed() {
-        return query.results.channel.getWind().getSpeed();
+        return doesChannelExists()?query.results.channel.getWind().getSpeed():0.0f;
     }
 
     public String getWindSpeedText() {
-        return "Wind: " + getWindSpeed().toString() + " " + getUnitSpeedText();
+        return doesChannelExists()?"Wind: " + getWindSpeed().toString() + " " + getUnitSpeedText():"";
     }
 
     private String getUnitSpeedText() {
-        return query.results.channel.getUnits().getSpeed();
+        return doesChannelExists()?query.results.channel.getUnits().getSpeed():"";
     }
 
     public int getTemperature() {
-        return query.results.channel.getItem().getCondition().getTemp();
+        return doesChannelExists()?query.results.channel.getItem().getCondition().getTemp():-1;
     }
 
     public String getTemperatureString() {
-        return "Temperature: " + String.valueOf(getTemperature()) + " " + getUnitTemperatureString();
+        return doesChannelExists()?"Temperature: " + String.valueOf(getTemperature()) + " " + getUnitTemperatureString():"";
     }
 
     private String getUnitTemperatureString() {
-        return query.results.channel.getUnits().getTemperature();
+        return doesChannelExists()?query.results.channel.getUnits().getTemperature():"";
     }
 
     public String getConditionText() {
-        return "Condition: " + query.results.channel.getItem().getCondition().getText();
+        return doesChannelExists()?"Condition: " + query.results.channel.getItem().getCondition().getText():"";
     }
 
     /*
